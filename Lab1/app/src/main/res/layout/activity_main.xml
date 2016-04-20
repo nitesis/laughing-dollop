@@ -20,5 +20,6 @@
         android:text="Press me"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonClick"/>
 </RelativeLayout>

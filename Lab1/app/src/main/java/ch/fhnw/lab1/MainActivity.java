@@ -3,6 +3,7 @@ package ch.fhnw.lab1;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,4 +51,9 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Log.d("HelloWorld", "onDestroy() called");
     }
+
+
+     public void onButtonClick (View v) {
+        
+     }
 }
