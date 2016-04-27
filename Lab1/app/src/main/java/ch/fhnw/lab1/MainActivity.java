@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // R. ist die Ressource auf den Layout File, dient dazu, Ressourcen anzusprechen
+        // R(essourcen) File wird automatisch von Studio generiert, damit die ids (xml) schneller gefunden werden
         setContentView(R.layout.activity_main);
         Log.d("HelloWorld", "onCreate() called");
     }
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
      public void onButtonClick (View v) {
+
          startActivity(new Intent("ch.fhnw.lab1.MessageActivity"));
      }
 }
