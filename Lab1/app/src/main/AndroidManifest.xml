@@ -15,14 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MessageActivity">
+            <intent-filter>
+                <action android:name="ch.fhnw.lab1.MESSAGE" />
 
-        <activity
-            android:name=".MessageActivity"
-            android:label="@string/app_name" >
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

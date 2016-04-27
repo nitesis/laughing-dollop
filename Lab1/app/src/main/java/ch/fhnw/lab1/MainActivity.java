@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
      public void onButtonClick (View v) {
 
-         startActivity(new Intent("ch.fhnw.lab1.MessageActivity"));
+          startActivity(new Intent("ch.fhnw.lab1.MESSAGE"));
+         // call activity using an explicit intent
+         //Intent intent = new Intent(this, MessageActivity.class);
+         //startActivity(intent);
      }
 }
