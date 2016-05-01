@@ -10,4 +10,15 @@ public class ColorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
     }
+
+    class ColorTask extends AsyncTask<Void, RGBColor, Void> {
+        private boolean error;
+        private RGBColor color;
+    }
+
+    class RGBColor {
+        int r;
+        int g;
+        int b;
+    }
 }
