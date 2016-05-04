@@ -14,6 +14,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         // TODO: Find the button and add a click listener
+        Button b = (Button) findViewById()
         // TODO: In the OnClickListener create a new Intent which targets your DetailActivity
         // TODO: Add custom data (Extras) to your intent
         // TODO: Start DetailActivity and show passed data in a textView on the DetailActivity
