@@ -22,10 +22,11 @@ public class MainActivity extends ActionBarActivity {
         b.setOnClickListener(new View.OnClickListener() {
                                  @Override
                                  public void onClick(View v) {
+                                     // TODO: Use Toast.makeText(...).show() to show a Toast
                                      Toast.makeText(MainActivity.this, "Hello FHNW", Toast.LENGTH_LONG).show();
                                  }
                              });
-                // TODO: Use Toast.makeText(...).show() to show a Toast
+
     }
 
 }
