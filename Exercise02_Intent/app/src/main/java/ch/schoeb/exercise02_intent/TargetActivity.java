@@ -1,19 +1,31 @@
 package ch.schoeb.exercise02_intent;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class TargetActivity extends ActionBarActivity {
 
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_target);
+        // TODO: Start DetailActivity and show passed data in a textView on the DetailActivity
+        textView = (TextView) findViewById(R.id.showText);
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        Intent intent = getIntent();
+        String data = intent.getStringExtra("My Extra");
+        textView.setText(data);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
