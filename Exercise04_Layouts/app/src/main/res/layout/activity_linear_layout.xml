@@ -9,16 +9,19 @@
     tools:context="ch.schoeb.exercise04_layouts.LinearLayoutActivity">
 
     <View
+        android:id="@+id/redElement"
         android:background="#F00"
         android:layout_width="90px"
         android:layout_height="90px" />
 
     <View
+        android:id="@+id/greenElement"
         android:background="#0F0"
         android:layout_width="90px"
         android:layout_height="90px" />
 
     <View
+        android:id="@+id/blueElement"
         android:background="#00F"
         android:layout_width="90px"
         android:layout_height="90px" />
