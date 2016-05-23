@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
+<!-- Weil der order -land heisst, weiss App, dass das gilt, wenn Phone in landscape mode ist-->
     <string name="this_text_is_shown_on_mode">This text is shown on landscape mode</string>
 
 </resources>
