@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:text="This text is shown on portrait mode"
+        android:text="@string/this_text_is_shown_on_mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />

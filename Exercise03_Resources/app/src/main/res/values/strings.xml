@@ -4,5 +4,6 @@
     <string name="app_name">Exercise03_Resources</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="this_text_is_shown_on_mode">This text is shown on portrait mode</string>
 
 </resources>
