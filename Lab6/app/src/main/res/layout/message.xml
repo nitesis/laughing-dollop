@@ -1,10 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:gravity="center">
 
-	<ImageView android:src="@drawable/helloworld"
-		android:layout_height="wrap_content" 
-		android:layout_width="wrap_content" />
+	<fragment android:name="ch.fhnw.edu.emoba.lab6.MessageFragment"
+		android:id="@+id/message_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:layout="@layout/fragment_message" />
 
-</LinearLayout>
+</RelativeLayout>
