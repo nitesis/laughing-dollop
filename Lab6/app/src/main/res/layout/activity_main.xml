@@ -5,20 +5,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:gravity="center"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="@string/welcome"/>
+    <fragment android:name="ch.fhnw.edu.emoba.lab6.MainFragment"
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_main"/>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onButtonClick"
-        android:layout_alignParentBottom="true"
-        android:text="@string/press"
-        android:id="@+id/button" />
 
 </RelativeLayout>
 

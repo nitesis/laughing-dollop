@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ch.fhnw.edu.emoba.ueb1.R;
-
 /**
  * A simple {@link Fragment} subclass.
  */
