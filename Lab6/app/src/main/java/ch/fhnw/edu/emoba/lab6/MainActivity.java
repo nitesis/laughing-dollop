@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         long start = System.nanoTime();
         super.onCreate(savedInstanceState);
-        //Log.d("HelloWorld", "onCreate() called " + savedInstanceState);
+        Log.d("HelloWorld", "onCreate() called " + savedInstanceState);
         setContentView(R.layout.activity_main);
         long duration = System.nanoTime() - start;
         Log.d(TAG, "Duration " + duration + " nanoseconds");
