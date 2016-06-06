@@ -17,8 +17,8 @@ public class ColorService extends IntentService {
     // TODO: Rename actions, choose action names that describe tasks that this
     // IntentService can perform, e.g. ACTION_FETCH_NEW_ITEMS
     private static String TAG = "ColorService";
-    private static final String COLOR_VALUE = "COLOR";
-    private static final String NOTIFICATION = "NEW_COLOR";
+    public static final String COLOR_VALUE = "COLOR";
+    public static final String NOTIFICATION = "NEW_COLOR";
 
     private RGBColor color = new RGBColor();
 
@@ -38,9 +38,11 @@ public class ColorService extends IntentService {
         color.b = (int) Math.round(Math.random() * 255);
 
 
-        // Intent colorMessage = new Intent(NOTIFICATION);
-        // colorMessage.putExtra(COLOR_VALUE, color);
-        // LocalBroadcastManager.getInstance(this).sendBroadcast(colorMessage);
+        Intent colorMessage = new Intent(NOTIFICATION);
+        // Key Value
+        colorMessage.putExtra(COLOR_VALUE, color);
+        //Broadcast ist Intent und wird hier verschickt
+        LocalBroadcastManager.getInstance(this).sendBroadcast(colorMessage);
 
         Log.d(TAG, "color is " + color);
     }

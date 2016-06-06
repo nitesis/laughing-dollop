@@ -19,9 +19,11 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".AlarmReceiver"
         <service
             android:name=".ColorService"
-            android:exported="false"></service>
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>

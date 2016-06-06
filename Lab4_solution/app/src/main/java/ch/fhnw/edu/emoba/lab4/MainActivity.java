@@ -1,10 +1,16 @@
 package ch.fhnw.edu.emoba.lab4;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,11 +20,24 @@ public class MainActivity extends Activity {
 	public static final String TAG = "MainActivity";
 
 	private TextView helloWorldView;
-	private Handler workerThreadHandler = null;
+//	private Handler workerThreadHandler = null;
     private Handler mainThreadHandler = null;
+    private AlarmReceiver alarm;
+
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            RGBColor color = (RGBColor) intent.getSerializableExtra(ColorService.COLOR_VALUE);
+            if (color != null) {
+                updateHelloWorldView(color);
+            }
+
+        }
+    }
 
 	private void updateHelloWorldView(RGBColor c) {
 		helloWorldView.setBackgroundColor(Color.rgb(c.r,c.g, c.b));
+        Log.d(TAG, c.r + " " + c.g + " " + c.b);
 	}
 	
 	@Override
@@ -28,78 +47,30 @@ public class MainActivity extends Activity {
 		helloWorldView = (TextView) findViewById(R.id.txtView);
 		helloWorldView.setText("Hello World");
 
-//        mainThreadHandler = new MyUIHandler(this);
-        this.mainThreadHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                switch (msg.what) {
-                    case WorkerThread.NEW_COLOR:
-                        Bundle data = msg.getData();
-                        if (data.containsKey(WorkerThread.COLOR_VALUE)) {
-                            final RGBColor color = (RGBColor) data.get(WorkerThread.COLOR_VALUE);
-                            updateHelloWorldView(color);
-                        }
-                        break;
-                    default:
-                        super.handleMessage(msg);
-                }
-            }
-        };
+        alarm = new AlarmReceiver(this);
 	}
 
-    public Handler getMainThreadHandler() {
-        return mainThreadHandler;
-    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter(ColorService.NOTIFICATION));
 
-    public void setWorkerThreadHandler(Handler workerThreadHandler) {
-        this.workerThreadHandler = workerThreadHandler;
     }
 
     public void start(View view) {
-        if (workerThreadHandler == null) {
-            WorkerThread workerThread = new WorkerThread("ColorThread", this);
+ //       startService(new Intent(this, ColorService.class));
+        if(alarm != null){
+            alarm.setAlarm();
         }
     }
 
-    public void stop(View view) {
-        doStop();
-	}
-
-    private void doStop() {
-        if (this.workerThreadHandler != null) {
-            Message msg = workerThreadHandler.obtainMessage();
-            msg.what = WorkerThread.STOP_COLOR_THREAD;
-            msg.sendToTarget();
-            this.workerThreadHandler = null;
-        }
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
-        doStop();
-    }
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+        Log.d(TAG, "Successfully unregistered BroadcastReceiver");
 
-    private static class MyUIHandler extends Handler {
-        private final WeakReference<MainActivity> context;
-
-        MyUIHandler(MainActivity context) {
-            this.context = new WeakReference<MainActivity>(context);
-        }
-
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case WorkerThread.NEW_COLOR:
-                    Bundle data = msg.getData();
-                    if (data.containsKey(WorkerThread.COLOR_VALUE)) {
-                        final RGBColor color = (RGBColor) data.get(WorkerThread.COLOR_VALUE);
-                        context.get().updateHelloWorldView(color);
-                    }
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-        }
     }
 }
 
