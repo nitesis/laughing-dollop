@@ -21,6 +21,11 @@
             TODO: Add Broadcast-Receiver registration here
             Action for startup finished is: android.intent.action.BOOT_COMPLETED
          -->
+        <receiver android:name=".BootCompletedBroadcastReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
