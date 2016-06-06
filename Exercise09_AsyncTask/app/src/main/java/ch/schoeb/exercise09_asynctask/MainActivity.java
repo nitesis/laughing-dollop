@@ -44,7 +44,9 @@ public class MainActivity extends Activity {
 
             // TODO:
             // - Stelle sicher, dass der Progress auf 0 steht
-            // - Stelle sicher, dass "Started in der textViewState"
+            progressBar.setProgress(0);
+            // - Stelle sicher, dass "Started" in der textViewState
+            textViewState.setText("Started");
         }
 
         @Override
@@ -52,6 +54,7 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             // TODO:
             // - Stelle sicher, dass "Finished" in der "textViewState"
+            textViewState.setText("Finished");
         }
 
         @Override
@@ -59,6 +62,16 @@ public class MainActivity extends Activity {
 
             // TODO: Z�hle den Stand von 0 auf 100
             // - Benutze Thread.sleep(1000) um alles sichtbar zu machen
+            for (int i = 0; i < 10; i++ ) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                publishProgress(i*10);
+            }
+
             // - Zeige den aktuellen Stand dem Benutzer -> publishProgress(...)
 
             return null;
@@ -70,7 +83,9 @@ public class MainActivity extends Activity {
 
             // TODO: Stelle sicher, dass der aktuelle Stand (values[0]) in der
             // ProgressBar angezeigt wird
+            progressBar.setProgress(values[0]);
+
+            }
 
         }
     }
-}
